@@ -1,0 +1,21 @@
+{ 
+  “variables":{
+         ”aws_access_key": ""
+		 "aws_security_key": ""
+    },
+  "builders":[{
+          "type": "amazon-ebs",
+          "access_key": "{{user `aws_access_key`}}",
+          "security_key": "{{user `aws_security_key`}}",
+          "region": "us-ease-1",
+		  "source_ami": "ami-face3c188",
+		  "instance_type": "t2.micro",
+		  "ssh_username": "ubuntu",
+		  "ami_name": "vipin-Ami-{{timestamp}}"
+    }],
+  "provisioners":[{
+          "type": "shell",
+		  "script": "install.sh"
+    }]
+}
+		  
